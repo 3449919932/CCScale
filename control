@@ -1,0 +1,23 @@
+Package: com.dafeiyu.ccscale
+Name: CCScale
+Version: 1.9-1
+Architecture: iphoneos-arm64e
+Description: 独立插件：控制中心整体放大 1.02 倍（参数已写死）
+ 独立插件，把控制中心（含 ControlCenter18）整体放大到 1.02 倍，无需任何配置。
+ .
+ 原理：hook SpringBoard 的 CCUIModularControlCenterOverlayViewController，
+ 布局完成后先修正 bounds 再套用整体缩放，不改动 ControlCenter18 本体。
+ .
+ 参数已写死（安装即生效）：
+ - Scale = 1.02（原生为 1.00）
+ - OffsetX = 0，OffsetY = 0
+ .
+ 不读取任何配置文件，因此重装/升级后效果恒定，不受历史 plist 影响。
+ 如需其他数值，需修改源码中的 kCCScale / kCCOffsetX / kCCOffsetY 后重新编译。
+ .
+ 适用：iPhone SE 3 / iOS 16.1；支持 rootless 与 roothide 环境。
+ 卸载即恢复原状，无安装脚本、无残留。
+Maintainer: 大飞鱼
+Author: 大飞鱼
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 16.0), firmware (<< 18.0)
