@@ -1,7 +1,7 @@
 Package: com.dafeiyu.ccscale
 Name: CCScale
-Version: 1.9-1
-Architecture: iphoneos-arm64e
+Version: 1.9-3
+Architecture: iphoneos-arm64
 Description: 独立插件：控制中心整体放大 1.02 倍（参数已写死）
  独立插件，把控制中心（含 ControlCenter18）整体放大到 1.02 倍，无需任何配置。
  .

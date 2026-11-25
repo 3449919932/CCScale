@@ -37,3 +37,18 @@ Sileo 安装 deb → respring。卸载即恢复，没有安装脚本、无残留
 > 早期版本会把配置写到
 > `/var/jb/var/mobile/Library/Preferences/com.dafeiyu.ccscale.plist`，
 > 1.9 起不再读取它，留着也不影响；想干净可以删掉。
+
+## 构建两种架构（同一份源码）
+
+```bash
+export THEOS="$HOME/theos"
+
+# rootless（Dopamine 等通用环境）→ 产物 *_iphoneos-arm64.deb
+make clean && make package FINALPACKAGE=1
+
+# roothide（RootHide 环境）→ 产物 *_iphoneos-arm64e.deb
+make clean && make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=roothide
+```
+
+`THEOS_PACKAGE_SCHEME` 默认 `rootless`，命令行传 `roothide` 即覆盖；
+`control` 里的 `Architecture` 由 Theos 按 scheme 决定，无需手改。
